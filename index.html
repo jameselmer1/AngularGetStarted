@@ -10,13 +10,13 @@
 </head>
 
 <body ng-controller="MainController">
-<h1>{{message}}</h1>
-    <br/>
+    <h1>{{message}}</h1>
+    <br />
     <div>{{error}}</div>
 
     <form name="searchUser" ng-submit="search(username)">
         <input type="search" required placeholder="User Name to find" ng-model="username" />
-        <input type="submit" value="search"/>
+        <input type="submit" value="search" />
     </form>
 
     <div>
@@ -26,7 +26,26 @@
             blog: <a href="{{user.blog}}">{{user.blog}}</a>
         </h3>
     </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Stars</th>
+                <th>Language</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="repo in repos">
+                <td>{{repo.name}}</td>
+                <td>{{repo.stargazers_count | number}}</td>
+                <td>{{repo.language}}</td>
+            </tr>
+        </tbody>
+    </table>
     <img ng-src="{{user.avatar_url}}" title="{{user.name}}" />
+
+
 </body>
 
 </html>
