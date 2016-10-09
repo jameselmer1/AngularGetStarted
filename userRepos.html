@@ -1,0 +1,44 @@
+﻿<div class="row">
+    <form>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+                <input type="text" class="form-control" placeholder="Search the github repos" ng-model="searchRepos">
+            </div>
+        </div>
+    </form>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    <a href="#" ng-click="sortName='name'; sortReverse = !sortReverse">
+                        <span ng-show="sortName == 'name' && sortReverse" class="glyphicon glyphicon-triangle-bottom"></span>
+                        <span ng-show="sortName == 'name' && !sortReverse" class="glyphicon glyphicon-triangle-top"></span>
+                        Name
+                    </a>
+                </th>
+                <th>
+                    <a href="#" ng-click="sortName='stargazers_count'; sortReverse = !sortReverse">
+                        <span ng-show="sortName == 'stargazers_count' && sortReverse" class="glyphicon glyphicon-triangle-bottom"></span>
+                        <span ng-show="sortName == 'stargazers_count' && !sortReverse" class="glyphicon glyphicon-triangle-top"></span>
+                        Stars
+                    </a>
+                </th>
+                <th>
+                    <a href="#" ng-click="sortName='language'; sortReverse = !sortReverse">
+                        <span ng-show="sortName == 'language' && sortReverse" class="glyphicon glyphicon-triangle-bottom"></span>
+                        <span ng-show="sortName == 'language' && !sortReverse" class="glyphicon glyphicon-triangle-top"></span>
+                        Language
+                    </a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="repo in repos | orderBy:sortName:sortReverse | filter:searchRepos">
+                <td>{{repo.name}}</td>
+                <td class="tag tag-primary">{{repo.stargazers_count | number}}</td>
+                <td>{{repo.language}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
