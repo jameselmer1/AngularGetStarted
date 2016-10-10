@@ -1,4 +1,19 @@
-﻿
+﻿body {
+    /*width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1200px;
+    min-width: 1200px;*/
+}
+
+h1 {
+    font-size: 72px;
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: auto;
+    text-align: center;
+    letter-spacing: 10px;
+}
+
 img {
     max-height: 125px;
     max-width: 125px;
