@@ -1,17 +1,10 @@
 (function () {
     var app = angular.module("githubViewer", []);
 
-    var MainController = function ($scope, $http) {
+    var MainController = function ($scope, $log, $anchorScroll, $location, github) {
 
-        var onUserComplete = function (response) {
-            $scope.user = response.data;
-            $scope.userDetailsView = 'userDetails.html';
-            $http.get($scope.user.repos_url)
-                .then(onRepos, onError);
-        };
-
-        var onRepos = function(response) {
-            $scope.repos = response.data;
+        var onRepos = function (data) {
+            $scope.repos = data;
             $scope.userReposView = 'userRepos.html';
         };
 
@@ -19,13 +12,24 @@
             $scope.error = "Could not get user";
         };
 
+
+        var onUserComplete = function (data) {
+            $scope.user = data;
+            $scope.userDetailsView = 'userDetails.html';
+            $location.hash("userDetails");
+            $anchorScroll();
+
+            github.getRepos($scope.user).then(onRepos, onError);
+        };
+
+        
         $scope.hideError = function() {
             $scope.error = "";
         }
 
         $scope.search = function (username) {
-            $http.get("https://api.github.com/users/" + username)
-                .then(onUserComplete, onError);
+            $log.info(username);
+            github.getUser(username).then(onUserComplete, onError);
         };
 
         $scope.username = "robconery";
@@ -40,5 +44,5 @@
     };
 
 
-    app.controller("MainController", ["$scope", "$http", MainController]);
+    app.controller("MainController", MainController);
 }());
