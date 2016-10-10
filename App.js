@@ -12,9 +12,10 @@
                     templateUrl: "user.html",
                     controller: "UserController"
                 })
+                //https://api.github.com/repos/jameselmer1/AngularGetStarted
                 .when("/repo/:username/:reponame", {
-                    templateUrl: "",
-                    controller: ""
+                    templateUrl: "repo.html",
+                    controller: "RepoController"
                 });
             //.otherwise({ redirectTo: "/main" });
 

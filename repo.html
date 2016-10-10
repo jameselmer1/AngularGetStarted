@@ -1,0 +1,22 @@
+﻿<div class="row">
+    <div class="row">
+        <h2>{{reponame}}</h2>
+    </div>
+    <div>
+        <p>{{repo.open_issues_count}}</p>
+    </div>
+    <div class="well" ng-repeat="con in contributors">
+        <div class="row">
+            <div class="col-md-3">
+                <img ng-src="{{con.avatar_url}}" title="{{con.login}}" />
+            </div>
+            <div class="col-md-5">
+                <p>{{con.login}} is admin: {{con.site_admin}}</p>
+                <p>{{con.contributions}}</p>
+                <a href="/user/{{con.login}}">View User Repos</a>
+            </div>
+        </div>
+        <div class="row"></div>
+    </div>
+</div>
+<a href="/user/{{username}}">Back to {{username}}</a>
