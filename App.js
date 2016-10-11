@@ -16,8 +16,8 @@
                 .when("/repo/:username/:reponame", {
                     templateUrl: "repo.html",
                     controller: "RepoController"
-                });
-            //.otherwise({ redirectTo: "/main" });
+                })
+            .otherwise({ redirectTo: "/main" });
 
             // use the HTML5 History API to allow angular to change the browser history
             // without refreshing the page
